@@ -1,57 +1,61 @@
-<!-- FONTS -->
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+<html>
 
-<!-- PAGE STUFF -->
-<div class="rela-block page">
-    <div class="rela-block top-bar">
-        <div class="caps name"><div class="abs-center">Kyle J Shanks</div></div>
-    </div>
-    <div class="side-bar">
-        <div class="mugshot">
-            <div class="logo">
-                <svg viewbox="0 0 80 80" class="rela-block logo-svg">
-                    <path d="M 10 10 L 52 10 L 72 30 L 72 70 L 30 70 L 10 50 Z" stroke-width="2.5" fill="none"/>
-                </svg>
-                <p class="logo-text">kj</p>
-            </div>
+<head>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Share+Tech|Share+Tech+Mono" rel="stylesheet" />
+    <title>Designs by Laighlin</title>
+</head>
+
+<body onload="draw()">
+    <canvas id="bg"></canvas>
+    <main id="content">
+        <h1>
+            <div class="hex moved"></div><span>About the Dev</span></h1>
+        <div class="subtext" id="main">
+            <p>The name's Lin (which is short for Lindeun or Laighlin, depending on where you know me from). I'm a 24-year-old South Asian design student with a tech sort of background and a lot to say about the trends and direction of the contemporary design
+                world.</p>
+            <p>I wanted to be an engineer for most of my life. By the time I changed my mind about that, my liaison with the applied sciences had drastically altered my worldview already. This still informs much of my work and work ethic - design is no less
+                of a science in my eyes than physics or computing. (In other words, I like design as long as I can be a nerd about it.)</p>
         </div>
-        <p>123 My Place Drive</p>
-        <p>Astoria, New York 11105</p>
-        <p>1-800-CALLPLZ</p>
-        <p>emailsareforsquares@gmail.com</p><br>
-        <p class="rela-block social twitter">Twitter stuff</p>
-        <p class="rela-block social pinterest">Pinterest things</p>
-        <p class="rela-block social linked-in">Linked-in man</p>
-        <p class="rela-block caps side-header">Expertise</p>
-        <p class="rela-block list-thing">HTML</p>
-        <p class="rela-block list-thing">CSS (Stylus)</p>
-        <p class="rela-block list-thing">JavaScript & jQuery</p>
-        <p class="rela-block list-thing">Killer Taste</p>
-        <p class="rela-block caps side-header">Education</p>
-        <p class="rela-block list-thing">Advanced potion making</p>
-        <p class="rela-block list-thing">Degree in popping and locking</p>
-        <p class="rela-block list-thing">Knitting game on point</p>
-        <p class="rela-block list-thing">Culinary af</p>
+        <h2>
+            <div class="hex"></div><span>Skills</span></h2>
+        <div class="subtext coll">
+            A good grasp of object-oriented programming and computing-related math as a whole. Proficient in CSS3 and HTML5; making significant inroads into JavaScript and JQuery. Adobe Illustrator is both enjoyable for me and putty in my hands. <i>Putty.</i>            In addition to my knowledge of coding, I also speak five human languages and am in the process of learning a few more.
+        </div>
+        <h2>
+            <div class="hex"></div><span>Hobbies & Interests</span></h2>
+        <div class="subtext coll">
+            Small indie coding projects (semi-professionally). Music (unprofessionally). Massively multiplayer online games (clumsily). Cooking (hungrily).
+        </div>
+        <h2>
+            <div class="hex"></div><span>Currently Working On</span></h2>
+        <div class="subtext coll">
+            An accessibility app for Android, a couple of desktop themes for a blogging platform I casually use, and a photography project detailing the interplay of natural and artifical in urban environments.
+        </div>
+        
+        <h2>
+            <div class="hex"></div><span>Find Me</span></h2>
+        <div class="subtext coll">
+            <a>Twitter</a> | <a>Tumblr</a> | <a>Codepen</a> | <a>Behance</a>
+        </div>
+        
+        <h2>
+            <div class="hex"></div><span>Contact Me</span></h2>
+        <div class="subtext coll">
+            <ul>
+                <li>Phone: +12 345 678 90</li>
+                <li>E-mail: <a>lindeun@yahoo.com</a></li>
+                <li>Discord: <a>Laighlin#0371</a></li>
+            </ul>
+        </div>
+    </main>
+    <svg viewBox="0 0 500 150" preserveAspectRatio="none" class="wave" id="one"><path d="M-13.36,88.98 C168.85,182.73 276.72,-73.84 506.31,79.10 L500.00,150.00 L0.00,150.00 Z"></path></svg>
+    <svg viewBox="0 0 500 150" preserveAspectRatio="none" class="wave" id="two"><path d="M-13.36,88.98 C168.85,182.73 276.72,-73.84 506.31,79.10 L500.00,150.00 L0.00,150.00 Z"></path></svg>
+    <div id="hex-holder">
+        <div class="hex" id="uno"></div>
+        <div class="hex" id="dos"></div>
+        <div class="hex" id="tres"></div>
     </div>
-    <div class="rela-block content-container">
-        <h2 class="rela-block caps title">Jr Front-End Developer</h2>
-        <div class="rela-block separator"></div>
-        <div class="rela-block caps greyed">Profile</div>
-        <p class="long-margin">Retro DIY quinoa, mixtape williamsburg master cleanse bushwick tumblr chillwave dreamcatcher hella wolf paleo. Knausgaard semiotics truffaut cornhole hoodie, YOLO meggings gochujang tofu. Locavore ugh kale chips iPhone biodiesel typewriter freegan, kinfolk brooklyn kitsch man bun. Austin neutra etsy, lumbersexual paleo cornhole sriracha kinfolk meggings kickstarter. </p>
-        <div class="rela-block caps greyed">Experience</div>
+</body>
 
-        <h3>Job #1</h3>
-        <p class="light">First job description</p>
-        <p class="justified">Plaid gentrify put a bird on it, pickled XOXO farm-to-table irony raw denim messenger bag leggings. Hoodie PBR&B photo booth, vegan chillwave meh paleo freegan ramps. Letterpress shabby chic fixie semiotics. Meditation sriracha banjo pour-over. Gochujang pickled hashtag mixtape cred chambray. Freegan microdosing VHS, 90's bicycle rights aesthetic hella PBR&B. </p>
-        
-        <h3>Job #2</h3>
-        <p class="light">Second Job Description</p>
-        <p class="justified">Beard before they sold out photo booth distillery health goth. Hammock franzen green juice meggings, ethical sriracha tattooed schlitz mixtape man bun stumptown swag whatever distillery blog. Affogato iPhone normcore, meggings actually direct trade lomo plaid franzen shoreditch. Photo booth pug paleo austin, pour-over banh mi scenester vice food truck slow-carb. Street art kogi normcore, vice everyday carry crucifix thundercats man bun raw denim echo park pork belly helvetica vinyl. </p>
-        
-        <h3>Job #3</h3>
-        <p class="light">Third Job Description</p>
-        <p class="justified">Next level roof party lo-fi fingerstache skateboard, kogi tumblr. Shabby chic put a bird on it chambray, 3 wolf moon swag beard brooklyn post-ironic taxidermy art party microdosing keffiyeh marfa. Put a bird on it 3 wolf moon cliche helvetica knausgaard. Mumblecore fingerstache lomo, artisan freegan keffiyeh paleo kinfolk kale chips street art blog flannel.</p>
-    </div>
-</div>
+</html>
