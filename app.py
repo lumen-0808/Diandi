@@ -10,82 +10,43 @@ import csv, re, operator
 
 app = Flask(__name__)
 
+person = {
+    'first_name': 'Tingyuan',
+    'address' : 'Hubei Normal University',
+    # 'job': 'Student',
+    'tel': '15549864073',
+    'email': 'ing0909@outlook.com',
+    'capsname':'个人简历',
+    'description' : 'I spend most of my time on study,i have passed CET4/6 . and ihave acquired basic knowledge of my major during my schooltime. ',
+    'qq': '1373932',
+    'wechat': 'huuubb',
+    'github': 'https://github.com/lumen-0808',
+
+	'languages' : ['HTNL','CSS (Stylus)', 'JavaScript & jQuery', 'Killer Taste'],
+	'education' : ['湖北师范大学','XXXhigh school',  'XXXmiddle school'],
+
+    'experiences' : [
+        {
+            'NO' : 'Job #1',
+            'light': 'First Experience description',
+            'justified' : 'Plaid gentrify put a bird on it, pickled XOXO farm-to-table irony raw denim messenger bag leggings. Hoodie PBR&B photo booth, vegan chillwave meh paleo freegan ramps. Letterpress shabby chic fixie semiotics. Meditation sriracha banjo pour-over. Gochujang pickled hashtag mixtape cred chambray. Freegan microdosing VHS, 90s bicycle rights aesthetic hella PBR&B.',
+           
+        },
+        {
+        	'NO' : ' Job #2',
+        	'light': 'First Experience description',
+        	'justified' : 'Beard before they sold out photo booth distillery health goth. Hammock franzen green juice meggings, ethical sriracha tattooed schlitz mixtape man bun stumptown swag whatever distillery blog. Affogato iPhone normcore, meggings actually direct trade lomo plaid franzen shoreditch. Photo booth pug paleo austin, pour-over banh mi scenester vice food truck slow-carb. Street art kogi normcore, vice everyday carry crucifix thundercats man bun raw denim echo park pork belly helvetica vinyl. ',
+           
+        }
+    ]
+
+}
+
 
 @app.route('/')
-def cv():
-    return render_template('index2.html')
+def cv(person=person):
+	return render_template('index2.html',person=person)
 
-
-
-@app.route('/callback', methods=['POST', 'GET'])
-def cb():
-	return gm(request.args.get('data'))
-   
-@app.route('/chart')
-def index():
-	return render_template('index2.html',  graphJSON=gm())
-
-def gm(country='United Kingdom'):
-	df = pd.DataFrame(px.data.gapminder())
-
-	fig = px.line(df[df['country']==country], x="year", y="gdpPercap")
-
-	graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-	return graphJSON
-
-
-@app.route('/senti')
-def main():
-	text = ""
-	values = {"positive": 0, "negative": 0, "neutral": 0}
-
-	with open('ask_politics.csv', 'rt') as csvfile:
-		reader = csv.DictReader(csvfile, delimiter=',', quotechar='"')
-		for idx, row in enumerate(reader):
-			if idx > 0 and idx % 2000 == 0:
-				break
-			if  'text' in row:
-				nolinkstext = re.sub(r'''(?i)\b((?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))''', '', row['text'], flags=re.MULTILINE)
-				text = nolinkstext
-
-			blob = TextBlob(text)
-			for sentence in blob.sentences:
-				sentiment_value = sentence.sentiment.polarity
-				if sentiment_value >= -0.1 and sentiment_value <= 0.1:
-					values['neutral'] += 1
-				elif sentiment_value < 0:
-					values['negative'] += 1
-				elif sentiment_value > 0:
-					values['positive'] += 1
-
-	values = sorted(values.items(), key=operator.itemgetter(1))
-	top_ten = list(reversed(values))
-	if len(top_ten) >= 11:
-		top_ten = top_ten[1:11]
-	else :
-		top_ten = top_ten[0:len(top_ten)]
-
-	top_ten_list_vals = []
-	top_ten_list_labels = []
-	for language in top_ten:
-		top_ten_list_vals.append(language[1])
-		top_ten_list_labels.append(language[0])
-
-	graph_values = [{
-					'labels': top_ten_list_labels,
-					'values': top_ten_list_vals,
-					'type': 'pie',
-					'insidetextfont': {'color': '#FFFFFF',
-										'size': '14',
-										},
-					'textfont': {'color': '#FFFFFF',
-										'size': '14',
-								},
-					}]
-
-	layout = {'title': '<b>意见挖掘</b>'}
-
-	return render_template('index2.html', graph_values=graph_values, layout=layout)
 
 
 if __name__ == '__main__':
