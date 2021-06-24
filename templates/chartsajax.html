@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+
     <script>
         function cb(selection) {
             $.getJSON({
@@ -13,23 +14,155 @@
             });
         }
     </script>
+    <script>
+        function cb10(selection) {
+            $.getJSON({
+                url: "/callback10", data: { 'data': selection }, success: function (result) {
+                    Plotly.newPlot('chart10', result, {});;
+                }
+            });
+        }
+    </script>
 
+    <script>
+        function cb1(selection) {
+            $.getJSON({
+                url: "/callback1", data: { 'data': selection }, success: function (result) {
+                    Plotly.newPlot('chart1', result, {});;
+                }
+            });
+        }
+    </script>
+
+    <script>
+        function cb8(selection) {
+            $.getJSON({
+                url: "/callback8", data: { 'data': selection }, success: function (result) {
+                    Plotly.newPlot('chart8', result, {});;
+                }
+            });
+        }
+    </script>
 
 
 </head>
-
 <body style="font-family:arial, sans-serif">
-    <h1>1952-2007年的各国GDP可视化</h1>
+    <h1 align="center">1952-2007不同国家GDP收入,人口与人均寿命</h1>
+    数据集简介:不同国家历年GDP收入与人均寿命。包含字段：国家、洲、年份、平均寿命、人口数量、GDP、国家简称、国家编号；
+    <h2>1、柱状图</h2>
     <h2>输入国家如：India或China（大写字母开头）</h2>
-    
     <input type="text" id="fname" name="fname" onchange="cb(this.value)">
     <div id="chart" class="chart"></div>
+    柱状图可以看到每个国家从1952年到2007年的人口的数据变化,那中国来举例可以看到人口都是成上升趋势的,多尝试几次发现,大多数国家的人口都是成上升趋势的.但这个数据集只有到2007年的数据,可以对现在的国际人口来说没有太多的参考.
+
+
+    <!-- <h1>1952-2007不同年份的人均GDP和寿命的可视化</h1> -->
+    <h1>2、散点图</h1>
+    <h2>输入地区如：Asia或Europe（大写字母开头）</h2>
+    <input type="text" id="fname" name="fname" onchange="cb1(this.value)">
+    <div id="chart1" class="chart1"></div>
+    当默认的输入是Africa时可以看到,从1957年到2007年在非洲每个国家的平均寿命,可以了解到Reunion这个国家的平均寿命在非洲大陆都是比较高的,而Gambin这个国家的平均寿命就比较低了.在1992年左右Rwanda这个国家的平均寿命只有23.599.低的有点可怕了.
+
+    <h2>3、折线图</h2>
+    <h2>输入国家如：India或China（大写字母开头）</h2>
+    <input type="text" id="fname" name="fname" onchange="cb10(this.value)">
+    <div id="chart10" class="chart10"></div>
+    折现图可以更加清晰的看到每个国家的人口的变化,拿中国来举例,在1957到2007这段时间内中国的人口稳步式增长,都没有下降的时候,印度也是急速增长,没有下降的趋势.而Rwanda这个国家的人口在1957到2007这段时间内也是增长的,但在1992年到1997年这段时间人口没有多大的变化.
+    <!-- <h1>66666666</h1> -->
+
+    <h2>4、基于line_geo线型地图：</h2>
+    <div id="chart6" class="chart6"></div>
+    展示每个州上每个国家的点连成的线,在鼠标触碰到那一条线就会显示州名和国家名.
+
+   <!--  <h1>7777</h1> -->
+    <h2>5、3D散点图：</h2>
+    <div id="chart7" class="chart7"></div>
+    3D散点图从平均寿命，人口，GDP三个维度同时去展现一个数据集。通过图可以看到亚洲的GDP和人口增长的速度比其他的州的都要快。
+
+    <!-- <h1>888</h1> -->
+    <h2>6、冒泡散点图：</h2>
+    <!-- <input type="text" id="fname" name="fname" onchange="cb8(this.value)"> -->
+    <div id="chart8" class="chart8"></div>
+    冒泡散点图分析2002年从GDP和人口两个维度去展示数据集。可以看到亚洲的人口都集中在了1B到1.5B比其他州高出了不少。同时美国和欧洲的GDP也是比其他州高出不少。
+
+    <h2>7、面积图：</h2>
+    <div id="chart9" class="chart9"></div>
+    通过面积图课可以清除的感受到亚洲的人口数，感觉比其他几个州加起来都多。
+
+    <h1 align="center">鸢尾花（iris）数据集可视化</h1>
+    鸢尾花（iris）数据集简介:鸢尾花数据集共收集了三类鸢尾花，即Setosa鸢尾花、Versicolour鸢尾花和Virginica鸢尾花，每一类鸢尾花收集了50条样本记录，共计150条。
+数据集包括4个属性，分别为花萼的长、花萼的宽、花瓣的长和花瓣的宽。对花瓣我们可能比较熟悉，花萼是什么呢？花萼是花冠外面的绿色被叶，在花尚未开放时，保护着花蕾。四个属性的单位都是cm，属于数值变量，四个属性均不存在缺失值的情况，
+
+    <h2>1、散点矩阵图</h2>
+    <div id="chart2" class="chart2"></div>
+    散点图从不同种类的鸢尾花的萼片长，萼片宽 花瓣长，花瓣宽四个维度来进行展示，通过图可以看到同一个种类的鸢尾花的萼片长，萼片宽 花瓣长，花瓣宽这四个数据还是比较集中的。通过萼片长，萼片宽 花瓣长，花瓣宽的分析可以对鸢尾花的品种进行判断。
+    <!-- <h1>鸢尾花（iris）数据集可视化</h1> -->
+    <h2>2、联合分布图</h2>
+    <div id="chart3" class="chart3"></div>
+    联合分布图有散点图，柱状图等。从不同种类的鸢尾花的萼片长，萼片宽两个维度来进行展示。可以看到萼片宽最小的一个品种是versicolor这个品种宽度是2。萼片长最小的一个品种是setosa这个品种长度是4.3。整体来看setosa这个品种的花萼片比较长长，但萼片宽度比较小。
+    <!-- <h1>鸢尾花（iris）数据集可视化</h1> -->
+    <h2>3、小提琴图</h2>
+    <div id="chart4" class="char4"></div>
+    小提琴图从花瓣长度和花瓣宽度两个维度来进行展示，可以看到setosa这个品种的花，花瓣的长度和宽度都比较小。而virginica这个品种的花花瓣的长度，和宽度的数值都比较高。
+    <!-- <h1>鸢尾花（iris）数据集可视化</h1> -->
+    <h2>4、等高线图</h2>
+    <div id="chart5" class="char5"></div>
+    等高线图也是从花瓣长度和花瓣宽度两个维度来进行展示。和小提琴图都可以反应一样的结果：setosa这个品种的花，花瓣的长度和宽度都比较小。而virginica这个品种的花花瓣的长度，和宽度的数值都比较高。
+    <h2>5、密度热力图</h2>
+    <div id="chart11" class="char11"></div>
+    密度热力图从萼片长，萼片宽两个维度去展示数据，可以看到数据主要集中在萼片宽等于3左右，萼片长等于6.5到7左右。
 </body>
+
+
 
 <script>
     d = {{ graphJSON | safe }};
     Plotly.newPlot('chart', d, {});
 </script>
 
+<script>
+    d1 = {{ graphJSON1 | safe }};
+    Plotly.newPlot('chart1', d1, {});
+</script>
+<script>
+    d2 = {{ graphJSON2 | safe }};
+    Plotly.newPlot('chart2', d2, {});
+</script>
 
+<script>
+    d3 = {{ graphJSON3 | safe }};
+    Plotly.newPlot('chart3', d3, {});
+</script>
+<script>
+    d4 = {{ graphJSON4 | safe }};
+    Plotly.newPlot('chart4', d4, {});
+</script>
+<script>
+    d5 = {{ graphJSON5 | safe }};
+    Plotly.newPlot('chart5', d5, {});
+</script>
+<script>
+    d6 = {{ graphJSON6 | safe }};
+    Plotly.newPlot('chart6', d6, {});
+</script>
+<script>
+    d7 = {{ graphJSON7 | safe }};
+    Plotly.newPlot('chart7', d7, {});
+</script>
+<script>
+    d8 = {{ graphJSON8 | safe }};
+    Plotly.newPlot('chart8', d8, {});
+</script>
+<script>
+    d9 = {{ graphJSON9 | safe }};
+    Plotly.newPlot('chart9', d9, {});
+</script>
+<script>
+    d10 = {{ graphJSON10 | safe }};
+    Plotly.newPlot('chart10', d10, {});
+</script>
+<script>
+    d11 = {{ graphJSON11 | safe }};
+    Plotly.newPlot('chart11', d11, {});
+</script>
 </html>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>CodePen - Resume stuff</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-<link rel="stylesheet" href="./static/css/style.css">
+<link rel="stylesheet" href="../static/css/style.css">
 
 </head>
 <body>
@@ -29,7 +29,7 @@
             </div>
         </div>
 
-        <p>123 My Place Drive</p>
+        <p>联系方式：</p>
         <p>{{ person.job}}</p>
         <p>{{ person.address}}</p>
         <p>{{ person.tel}}</p>
@@ -40,7 +40,7 @@
         <p class="rela-block social linked-in">{{ person.github }}</p>
 
 
-        <p class="rela-block caps side-header">Expertise</p>
+        <p class="rela-block caps side-header">专业技能</p>
         {% for languages in person.languages %}
         <p class="rela-block list-thing">{{languages}}</p>
         {% endfor %}
@@ -48,7 +48,7 @@
         <p class="rela-block list-thing">Killer Taste</p>
  -->
 
-        <p class="rela-block caps side-header">Education</p>
+        <p class="rela-block caps side-header">主修课程</p>
         {% for education in person.education %}
         <p class="rela-block list-thing">{{education}}</p>
         {% endfor %}
@@ -61,19 +61,18 @@
     <div class="rela-block content-container">
         <h2 class="rela-block caps title">{{person.first_name}}</h2>
         <div class="rela-block separator"></div>
-        <div class="rela-block caps greyed">MY</div>
+        <div class="rela-block caps greyed">自我介绍</div>
         <p class="long-margin">{{person.description}}</p>
+      
 
 
-
-        <div class="rela-block caps greyed">Project</div>
+        <div class="rela-block caps greyed">项目经历</div>
         {% for experience in person.experiences %}
         <h3>{{ experience.NO }}</h3>
         <p class="light">{{ experience.light }}</p>
         <p class="justified">{{ experience.justified }} </p>
          {% endfor %}
-
-
+        <div class="rela-block caps greyed"><a href="{{url_for('index')}}" target="_blank">近期作品</a></div>
     </div>
 </div>
 <!-- partial -->

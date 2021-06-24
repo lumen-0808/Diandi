@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script>
+        function cb(selection) {
+            $.getJSON({
+                url: "/callback", data: { 'data': selection }, success: function (result) {
+                    Plotly.newPlot('chart', result, {});;
+                }
+            });
+        }
+    </script>
+
+
+
+</head>
+
+<body style="font-family:arial, sans-serif">
+    <h1>鸢尾花数据集</h1>
+    <!-- <h2>输入国家如：India或China（大写字母开头）</h2> -->
+    
+    <input type="text" id="fname" name="fname" onchange="cb(this.value)">
+    <div id="chart" class="chart"></div>
+</body>
+
+<script>
+    d1 = {{ graphJSON | safe }};
+    // d2 = {{ graphJSON2 | safe }};
+    // d3 = {{ graphJSON3 | safe }};
+    Plotly.newPlot('chart', d1, {});
+    // Plotly.newPlot('chart', d2, {});
+    // Plotly.newPlot('chart', d3, {});
+
+</script>
+
+
+</html>
