@@ -56,7 +56,8 @@ def cb1():
 
 @app.route('/chart')
 def index():
-    return render_template('chartsajax.html', graphJSON=gm(),graphJSON1=gm1())
+    return render_template('chartsajax.html', graphJSON=gm(),graphJSON1=gm1(),graphJSON2=gm2(),
+        graphJSON3=gm3())
 
 
 
@@ -80,6 +81,27 @@ def gm1(continent='Africa'):
     graphJSON1 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return graphJSON1
 
+def gm2():
+    iris= pd.DataFrame(px.data.iris())
+    fig=px.scatter_matrix(iris,  # 传入绘图数据
+                  dimensions=["sepal_width","sepal_length","petal_width","petal_length"],  # 维度设置
+                  color="species")  # 颜色取值
+    graphJSON2 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON2
+
+
+
+def gm3():
+    iris= pd.DataFrame(px.data.iris())
+    fig=px.scatter(
+    iris,
+    x="sepal_width",
+    y="sepal_length",
+    color="species",
+    marginal_x="histogram",
+    marginal_y="rug")
+    graphJSON3 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON3
 
 
 if __name__ == '__main__':
