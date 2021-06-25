@@ -63,9 +63,6 @@
     <div id="chart4" class="char4"></div>
     小提琴图从花瓣长度和花瓣宽度两个维度来进行展示，可以看到setosa这个品种的花，花瓣的长度和宽度都比较小。而virginica这个品种的花花瓣的长度，和宽度的数值都比较高。
     <!-- <h1>鸢尾花（iris）数据集可视化</h1> -->
-    <h2>4、等高线图</h2>
-    <div id="chart5" class="char5"></div>
-    等高线图也是从花瓣长度和花瓣宽度两个维度来进行展示。和小提琴图都可以反应一样的结果：setosa这个品种的花，花瓣的长度和宽度都比较小。而virginica这个品种的花花瓣的长度，和宽度的数值都比较高。
 </body>
 
 
@@ -89,9 +86,5 @@
 <script>
     d4 = {{ graphJSON4 | safe }};
     Plotly.newPlot('chart4', d4, {});
-</script>
-<script>
-    d5 = {{ graphJSON5 | safe }};
-    Plotly.newPlot('chart5', d5, {});
 </script>
 </html>

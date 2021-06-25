@@ -57,7 +57,7 @@ def cb1():
 @app.route('/chart')
 def index():
     return render_template('chartsajax.html', graphJSON=gm(),graphJSON1=gm1(),graphJSON2=gm2(),
-        graphJSON3=gm3(),graphJSON4=gm4(),graphJSON5=gm5())
+        graphJSON3=gm3(),graphJSON4=gm4())
 
 
 
@@ -113,16 +113,6 @@ def gm4():
            trendline="ols")  # 趋势线设置
     graphJSON4 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return graphJSON4
-
-def gm5():
-    iris= pd.DataFrame(px.data.iris())
-    fig=px.density_contour(iris,  # 数据集
-                   x="petal_width",  # xy轴
-                   y="petal_length",
-                   color="species"  # 颜色取值
-                  )  
-    graphJSON5= json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-    return graphJSON5
 
 if __name__ == '__main__':
   app.run(debug= True,port=5000,threaded=True)
