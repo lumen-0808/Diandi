@@ -190,9 +190,6 @@ def gm8(year=2002):
     graphJSON8 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return graphJSON8
 
-
-
-
 def gm9():
     df=pd.DataFrame(px.data.gapminder())
     fig=px.area(df,   # 绘图的数据集
