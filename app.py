@@ -121,7 +121,7 @@ def gm6(year=2002):
     projection="orthographic")
     graphJSON6 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return graphJSON6
-
+    
 def gm7():
     df=pd.DataFrame(px.data.gapminder())
     fig=px.scatter_3d(
@@ -130,7 +130,7 @@ def gm7():
     y="pop",  
     z="gdpPercap",  
     color="continent",  # 颜色取值
-    
+     )  # 改变默认颜色
 
     graphJSON7 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return graphJSON7
