@@ -59,9 +59,9 @@
     联合分布图有散点图，柱状图等。从不同种类的鸢尾花的萼片长，萼片宽两个维度来进行展示。可以看到萼片宽最小的一个品种是versicolor这个品种宽度是2。萼片长最小的一个品种是setosa这个品种长度是4.3。整体来看setosa这个品种的花萼片比较长长，但萼片宽度比较小。
 
      <!-- <h1>鸢尾花（iris）数据集可视化</h1> -->
-    <h2>3、小提琴图</h2>
-    <div id="chart4" class="char4"></div>
-    小提琴图从花瓣长度和花瓣宽度两个维度来进行展示，可以看到setosa这个品种的花，花瓣的长度和宽度都比较小。而virginica这个品种的花花瓣的长度，和宽度的数值都比较高。
+    <h2>4、等高线图</h2>
+    <div id="chart5" class="char5"></div>
+    等高线图也是从花瓣长度和花瓣宽度两个维度来进行展示。和小提琴图都可以反应一样的结果：setosa这个品种的花，花瓣的长度和宽度都比较小。而virginica这个品种的花花瓣的长度，和宽度的数值都比较高。
     <!-- <h1>鸢尾花（iris）数据集可视化</h1> -->
 </body>
 
@@ -84,7 +84,7 @@
     Plotly.newPlot('chart3', d3, {});
 </script>
 <script>
-    d4 = {{ graphJSON4 | safe }};
-    Plotly.newPlot('chart4', d4, {});
+    d5 = {{ graphJSON5 | safe }};
+    Plotly.newPlot('chart5', d5, {});
 </script>
 </html>
