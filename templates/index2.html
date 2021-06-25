@@ -64,8 +64,8 @@
         <div class="rela-block caps greyed">自我介绍</div>
         <p class="long-margin">{{person.description}}</p>
       
-
-        <div class="rela-block caps greyed"><a href="{{url_for('index')}}" target="_blank">近期作品</a></div>
+        <div class="rela-block caps greyed"><a href="{{url_for('index')}}" target="_blank">近期作品1</a></div>
+        <div class="rela-block caps greyed"><a href="{{url_for('index2')}}" target="_blank">近期作品2</a></div>
         <div class="rela-block caps greyed">项目经历</div>
         {% for experience in person.experiences %}
         <h3>{{ experience.NO }}</h3>

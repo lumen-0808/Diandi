@@ -40,6 +40,7 @@ person = {
 
 }
 
+
 @app.route('/')
 def cv(person=person):
 	return render_template('index2.html',person=person)
@@ -51,17 +52,21 @@ def cb():
 @app.route('/callback1', methods=['POST', 'GET'])
 def cb1():
     return gm1(request.args.get('data'))
-    
+
 @app.route('/callback10', methods=['POST', 'GET'])
 def cb10():
     return gm10(request.args.get('data'))
 
 
+
 @app.route('/chart')
 def index():
-    return render_template('chartsajax.html', graphJSON=gm(),graphJSON1=gm1(),graphJSON2=gm2(),
-        graphJSON3=gm3(),graphJSON5=gm5(),
+    return render_template('chartsajax.html', graphJSON=gm(),graphJSON1=gm1(),
         graphJSON6=gm6(),graphJSON7=gm7(),graphJSON8=gm8(),graphJSON9=gm9(),graphJSON10=gm10())
+
+@app.route('/chart2')
+def index2():
+    return render_template('chartsajax2.html', graphJSON2=gm2(),graphJSON3=gm3(),graphJSON4=gm4(),graphJSON5=gm5(),graphJSON11=gm11())
 
 
 
@@ -106,6 +111,20 @@ def gm3():
     marginal_y="rug")
     graphJSON3 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return graphJSON3
+
+
+def gm4():
+    iris= pd.DataFrame(px.data.iris())
+    fig=px.scatter(iris,  # 传入数据
+           x="petal_width",  # 设置XY轴
+           y="petal_length",
+           color="species",  # 颜色取值
+           marginal_y="violin",  # xy两表图形的设置：小提琴图和箱型图
+           marginal_x="box",
+           trendline="ols")  # 趋势线设置
+    graphJSON4 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON4
+    
 def gm5():
     iris= pd.DataFrame(px.data.iris())
     fig=px.density_contour(iris,  # 数据集
@@ -168,6 +187,17 @@ def gm10(country='Switzerland'):
     graphJSON10=json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return graphJSON10
 
+def gm11():
+    iris= pd.DataFrame(px.data.iris())
+    fig=px.density_heatmap(   # 密度热力图
+    iris,  
+    x="sepal_width",
+    y="sepal_length",
+    marginal_y="rug",
+    marginal_x="histogram"   
+    )  # 连接处的锥形部分显示出来
+    graphJSON11=json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON11
 
 
 if __name__ == '__main__':
