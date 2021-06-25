@@ -44,18 +44,9 @@ person = {
 def cv(person=person):
 	return render_template('index2.html',person=person)
 
-
 @app.route('/callback', methods=['POST', 'GET'])
 def cb():
     return gm(request.args.get('data'))
-
-@app.route('/callback10', methods=['POST', 'GET'])
-def cb10():
-    return gm10(request.args.get('data'))
-
-@app.route('/callback8', methods=['POST', 'GET'])
-def cb8():
-    return gm8(request.args.get('data'))
 
 @app.route('/callback1', methods=['POST', 'GET'])
 def cb1():
@@ -65,19 +56,7 @@ def cb1():
 
 @app.route('/chart')
 def index():
-    return render_template('chartsajax.html', graphJSON=gm(),graphJSON1=gm1(),graphJSON2=gm2(),
-        graphJSON3=gm3(),graphJSON4=gm4(),graphJSON5=gm5(),graphJSON6=gm6(),graphJSON7=gm7(),
-        graphJSON8=gm8(),graphJSON9=gm9(),graphJSON10=gm10(),graphJSON11=gm11())
-
-
-# @app.route('/chart1')
-# def index1():
-#     return render_template('chartsajax1.html',  graphJSON=gm1())
-
-
-# @app.route('/chart2')
-# def index2():
-#     return render_template('chartsajax2.html',  graphJSON=gm2())
+    return render_template('chartsajax.html', graphJSON=gm(),graphJSON1=gm1())
 
 
 
@@ -102,121 +81,6 @@ def gm1(continent='Africa'):
     return graphJSON1
 
 
-
-
-def gm2():
-    iris= pd.DataFrame(px.data.iris())
-    fig=px.scatter_matrix(iris,  # 传入绘图数据
-                  dimensions=["sepal_width","sepal_length","petal_width","petal_length"],  # 维度设置
-                  color="species")  # 颜色取值
-    graphJSON2 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-    return graphJSON2
-
-
-
-def gm3():
-    iris= pd.DataFrame(px.data.iris())
-    fig=px.scatter(
-    iris,
-    x="sepal_width",
-    y="sepal_length",
-    color="species",
-    marginal_x="histogram",
-    marginal_y="rug")
-    graphJSON3 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-    return graphJSON3
-
-def gm4():
-    iris= pd.DataFrame(px.data.iris())
-    fig=px.scatter(iris,  # 传入数据
-           x="petal_width",  # 设置XY轴
-           y="petal_length",
-           color="species",  # 颜色取值
-           marginal_y="violin",  # xy两表图形的设置：小提琴图和箱型图
-           marginal_x="box",
-           trendline="ols")  # 趋势线设置
-    graphJSON4 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-    return graphJSON4
-
-def gm5():
-    iris= pd.DataFrame(px.data.iris())
-    fig=px.density_contour(iris,  # 数据集
-                   x="petal_width",  # xy轴
-                   y="petal_length",
-                   color="species"  # 颜色取值
-                  )  
-    graphJSON5= json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-    return graphJSON5
-
-def gm6(year=2002):
-    df=pd.DataFrame(px.data.gapminder())
-    fig=px.line_geo(
-    df[df['year']==year],
-    locations="iso_alpha",
-    color="continent",
-    projection="orthographic")
-    graphJSON6 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-    return graphJSON6
-
-def gm7():
-    df=pd.DataFrame(px.data.gapminder())
-    fig=px.scatter_3d(
-    df,  # 传入数据集
-    x="lifeExp",  # 指定XYZ坐标轴的数据
-    y="pop",  
-    z="gdpPercap",  
-    color="continent",  # 颜色取值
-    # size="total",   # 大小取值
-    # hover_name="district_id",  # 指定颜色种类、大小和显示名称
-    # symbol="result",  # 右边的圆形和菱形
-    color_discrete_map={"Joly":"blue",
-                        "Bergeron":"green",
-                        "Coderre":"red"} )  # 改变默认颜色
-
-    graphJSON7 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-    return graphJSON7
-
-
-
-def gm8(year=2002):
-    df=pd.DataFrame(px.data.gapminder())
-    fig=px.scatter(df[df['year']==year]
-        ,x="gdpPercap"  # 横坐标
-        ,y="pop"  # 纵坐标
-        ,color="continent"  # 区分颜色
-        ,size="pop"   # 区分圆的大小
-        ,size_max=60  # 散点大小
-        )
-    graphJSON8 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-    return graphJSON8
-
-def gm9():
-    df=pd.DataFrame(px.data.gapminder())
-    fig=px.area(df,   # 绘图的数据集
-        x="year",   # 横轴数据
-        y="pop",  # 纵轴数据
-        color="continent",  # 颜色取值
-        line_group="country")  # 线型分组
-    graphJSON9 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-    return graphJSON9
-
-def gm10(country='Switzerland'):
-    df=pd.DataFrame(px.data.gapminder())
-    fig=px.line(df[df['country']==country], x='year', y="pop") 
-    graphJSON10=json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-    return graphJSON10
-
-def gm11():
-    iris= pd.DataFrame(px.data.iris())
-    fig=px.density_heatmap(   # 密度热力图
-    iris,  
-    x="sepal_width",
-    y="sepal_length",
-    marginal_y="rug",
-    marginal_x="histogram"   
-    )  # 连接处的锥形部分显示出来
-    graphJSON11=json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-    return graphJSON11
 
 if __name__ == '__main__':
   app.run(debug= True,port=5000,threaded=True)
