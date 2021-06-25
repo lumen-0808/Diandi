@@ -57,7 +57,7 @@ def cb1():
 @app.route('/chart')
 def index():
     return render_template('chartsajax.html', graphJSON=gm(),graphJSON1=gm1(),graphJSON2=gm2(),
-        graphJSON3=gm3(),graphJSON5=gm5())
+        graphJSON3=gm3(),graphJSON5=gm5(),graphJSON6=gm6())
 
 
 
@@ -111,6 +111,16 @@ def gm5():
                   )  
     graphJSON5= json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return graphJSON5
+
+def gm6(year=2002):
+    df=pd.DataFrame(px.data.gapminder())
+    fig=px.line_geo(
+    df[df['year']==year],
+    locations="iso_alpha",
+    color="continent",
+    projection="orthographic")
+    graphJSON6 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON6
 
 if __name__ == '__main__':
   app.run(debug= True,port=5000,threaded=True)
