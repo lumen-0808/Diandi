@@ -115,13 +115,12 @@ def gm3():
 
 def gm4():
     iris= pd.DataFrame(px.data.iris())
-    fig=px.scatter(iris,  # 传入数据
-           x="petal_width",  # 设置XY轴
-           y="petal_length",
-           color="species",  # 颜色取值
-           marginal_y="violin",  # xy两表图形的设置：小提琴图和箱型图
-           marginal_x="box",
-           trendline="ols")  # 趋势线设置
+
+    fig=px.box(iris,  # 数据集
+       x="petal_width",  # 横轴数据
+       y="petal_length",  # 纵轴数据
+       color="species",  # 颜色
+       notched=True)  # 连接处的锥形部分显示出来
     graphJSON4 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return graphJSON4
     
