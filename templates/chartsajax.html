@@ -53,6 +53,11 @@
     <h2>5、3D散点图：</h2>
     <div id="chart7" class="chart7"></div>
     3D散点图从平均寿命，人口，GDP三个维度同时去展现一个数据集。通过图可以看到亚洲的GDP和人口增长的速度比其他的州的都要快。
+    <!-- <h1>888</h1> -->
+    <h2>6、冒泡散点图：</h2>
+    <!-- <input type="text" id="fname" name="fname" onchange="cb8(this.value)"> -->
+    <div id="chart8" class="chart8"></div>
+    冒泡散点图分析2002年从GDP和人口两个维度去展示数据集。可以看到亚洲的人口都集中在了1B到1.5B比其他州高出了不少。同时美国和欧洲的GDP也是比其他州高出不少。
 
     <h1 align="center">鸢尾花（iris）数据集可视化</h1>
     鸢尾花（iris）数据集简介:鸢尾花数据集共收集了三类鸢尾花，即Setosa鸢尾花、Versicolour鸢尾花和Virginica鸢尾花，每一类鸢尾花收集了50条样本记录，共计150条。
@@ -103,5 +108,10 @@
 <script>
     d7 = {{ graphJSON7 | safe }};
     Plotly.newPlot('chart7', d7, {});
+</script>
+
+<script>
+    d8 = {{ graphJSON8 | safe }};
+    Plotly.newPlot('chart8', d8, {});
 </script>
 </html>

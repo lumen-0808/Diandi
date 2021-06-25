@@ -57,7 +57,7 @@ def cb1():
 @app.route('/chart')
 def index():
     return render_template('chartsajax.html', graphJSON=gm(),graphJSON1=gm1(),graphJSON2=gm2(),
-        graphJSON3=gm3(),graphJSON5=gm5(),graphJSON6=gm6(),graphJSON7=gm7())
+        graphJSON3=gm3(),graphJSON5=gm5(),graphJSON6=gm6(),graphJSON7=gm7(),graphJSON8=gm8())
 
 
 
@@ -131,9 +131,22 @@ def gm7():
     z="gdpPercap",  
     color="continent",  # 颜色取值
      )  # 改变默认颜色
-
     graphJSON7 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return graphJSON7
+
+def gm8(year=2002):
+    df=pd.DataFrame(px.data.gapminder())
+    fig=px.scatter(df[df['year']==year]
+        ,x="gdpPercap"  # 横坐标
+        ,y="pop"  # 纵坐标
+        ,color="continent"  # 区分颜色
+        ,size="pop"   # 区分圆的大小
+        ,size_max=60  # 散点大小
+        )
+    graphJSON8 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON8
+
+
 
 if __name__ == '__main__':
   app.run(debug= True,port=5000,threaded=True)
