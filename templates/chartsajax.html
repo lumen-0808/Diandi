@@ -49,6 +49,10 @@
     <h2>4、基于line_geo线型地图：</h2>
     <div id="chart6" class="chart6"></div>
     展示每个州上每个国家的点连成的线,在鼠标触碰到那一条线就会显示州名和国家名.
+     <!--  <h1>7777</h1> -->
+    <h2>5、3D散点图：</h2>
+    <div id="chart7" class="chart7"></div>
+    3D散点图从平均寿命，人口，GDP三个维度同时去展现一个数据集。通过图可以看到亚洲的GDP和人口增长的速度比其他的州的都要快。
 
     <h1 align="center">鸢尾花（iris）数据集可视化</h1>
     鸢尾花（iris）数据集简介:鸢尾花数据集共收集了三类鸢尾花，即Setosa鸢尾花、Versicolour鸢尾花和Virginica鸢尾花，每一类鸢尾花收集了50条样本记录，共计150条。
@@ -94,5 +98,10 @@
 <script>
     d6 = {{ graphJSON6 | safe }};
     Plotly.newPlot('chart6', d6, {});
+</script>
+
+<script>
+    d7 = {{ graphJSON7 | safe }};
+    Plotly.newPlot('chart7', d7, {});
 </script>
 </html>

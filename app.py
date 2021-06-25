@@ -57,7 +57,7 @@ def cb1():
 @app.route('/chart')
 def index():
     return render_template('chartsajax.html', graphJSON=gm(),graphJSON1=gm1(),graphJSON2=gm2(),
-        graphJSON3=gm3(),graphJSON5=gm5(),graphJSON6=gm6())
+        graphJSON3=gm3(),graphJSON5=gm5(),graphJSON6=gm6(),graphJSON7=gm7())
 
 
 
@@ -121,6 +121,19 @@ def gm6(year=2002):
     projection="orthographic")
     graphJSON6 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return graphJSON6
+
+def gm7():
+    df=pd.DataFrame(px.data.gapminder())
+    fig=px.scatter_3d(
+    df,  # 传入数据集
+    x="lifeExp",  # 指定XYZ坐标轴的数据
+    y="pop",  
+    z="gdpPercap",  
+    color="continent",  # 颜色取值
+    
+
+    graphJSON7 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON7
 
 if __name__ == '__main__':
   app.run(debug= True,port=5000,threaded=True)
