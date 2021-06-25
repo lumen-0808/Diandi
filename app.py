@@ -51,13 +51,17 @@ def cb():
 @app.route('/callback1', methods=['POST', 'GET'])
 def cb1():
     return gm1(request.args.get('data'))
-
+    
+@app.route('/callback10', methods=['POST', 'GET'])
+def cb10():
+    return gm10(request.args.get('data'))
 
 
 @app.route('/chart')
 def index():
     return render_template('chartsajax.html', graphJSON=gm(),graphJSON1=gm1(),graphJSON2=gm2(),
-        graphJSON3=gm3(),graphJSON5=gm5(),graphJSON6=gm6(),graphJSON7=gm7(),graphJSON8=gm8(),graphJSON9=gm9())
+        graphJSON3=gm3(),graphJSON5=gm5(),
+        graphJSON6=gm6(),graphJSON7=gm7(),graphJSON8=gm8(),graphJSON9=gm9(),graphJSON10=gm10())
 
 
 
@@ -156,6 +160,13 @@ def gm9():
         line_group="country")  # 线型分组
     graphJSON9 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return graphJSON9
+
+
+def gm10(country='Switzerland'):
+    df=pd.DataFrame(px.data.gapminder())
+    fig=px.line(df[df['country']==country], x='year', y="pop") 
+    graphJSON10=json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON10
 
 
 
