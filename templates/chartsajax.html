@@ -59,6 +59,10 @@
     <div id="chart8" class="chart8"></div>
     冒泡散点图分析2002年从GDP和人口两个维度去展示数据集。可以看到亚洲的人口都集中在了1B到1.5B比其他州高出了不少。同时美国和欧洲的GDP也是比其他州高出不少。
 
+    <h2>7、面积图：</h2>
+    <div id="chart9" class="chart9"></div>
+    通过面积图课可以清除的感受到亚洲的人口数，感觉比其他几个州加起来都多。
+
     <h1 align="center">鸢尾花（iris）数据集可视化</h1>
     鸢尾花（iris）数据集简介:鸢尾花数据集共收集了三类鸢尾花，即Setosa鸢尾花、Versicolour鸢尾花和Virginica鸢尾花，每一类鸢尾花收集了50条样本记录，共计150条。
 数据集包括4个属性，分别为花萼的长、花萼的宽、花瓣的长和花瓣的宽。对花瓣我们可能比较熟悉，花萼是什么呢？花萼是花冠外面的绿色被叶，在花尚未开放时，保护着花蕾。四个属性的单位都是cm，属于数值变量，四个属性均不存在缺失值的情况，
@@ -113,5 +117,9 @@
 <script>
     d8 = {{ graphJSON8 | safe }};
     Plotly.newPlot('chart8', d8, {});
+</script>
+<script>
+    d9 = {{ graphJSON9 | safe }};
+    Plotly.newPlot('chart9', d9, {});
 </script>
 </html>
