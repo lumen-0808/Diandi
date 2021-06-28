@@ -20,7 +20,7 @@ person = {
     'wechat': 'huuubb',
     'github': 'https://github.com/lumen-0808',
 
-	'languages' : ['HTNL','CSS (Stylus)', 'JavaScript & jQuery'],
+	'languages' : ['HTNL','CSS (Stylus)', 'JavaScript'],
 
 	'education' : ['C程序设计','面向对象程序设计(JAVA)',  '软件过程与管理','数据分析'],
 
