@@ -152,6 +152,8 @@ def gm7():
     z="gdpPercap",  
     color="continent",  # 颜色取值
      )  # 改变默认颜色
+
+
     graphJSON7 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return graphJSON7
 
